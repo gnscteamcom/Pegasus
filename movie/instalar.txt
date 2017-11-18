@@ -1,0 +1,25 @@
+/* INSTALAR EL SCRIPT */
+
+1- Subir todos los archivos a tu hosting
+
+2- Dar permisos 777 a config.php, /files/avatar/, /files/uploads/, /inc/smarty/templates_c/
+
+3- Entrar al instalador www.seusite.com/install/index.php
+
+4- Eliminar la carpeta install/
+
+
+
+
+
+/* ACTUALIZAR EL SCRIPT */
+
+1- Cambiar el nombre del archivo update.php~ a update.php
+
+2- Instalar el script
+
+3- Editar el archivo update.php, las lineas 6,7,8,9.
+
+4- Entrar a la url www.seusite.com/update.php
+
+5- Eliminar el archivo update.php

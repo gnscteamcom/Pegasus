@@ -1,0 +1,1 @@
+﻿<script>window.location='./php/app.php?login';</script>

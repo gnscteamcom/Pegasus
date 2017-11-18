@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Configuration</title>
+
+        <!-- Fonts -->
+
+        <?php echo $app->renderView('blocks/fonts.html'); ?>
+
+        <!-- Styles -->
+
+        <link rel="stylesheet" href="<?php echo $app->asset('css/jquery.mCustomScrollbar.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/framework.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/main.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/admin.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/bootstrap.css') ?>" />
+    </head>
+    <body class="install-wizard">
+
+        <img class="logo" src="<?php echo $app->asset('img/logo.png') ?>">
+
+        <div class="panel">
+
+            <div class="header">Configuration</div>
+
+            <div class="content">
+
+                <!-- Introduction -->
+
+                <p class="intro">
+                    As seguintes definições são a configuração de base de toda a aplicação. Eles são usados para se comunicar com seu banco de dados e definir a conta de usuário administrador. Por favor, preencha os formulários e continuar clicando em Salvar.
+
+                    <br><br>
+
+                    <strong>
+                         Se o banco de dados ainda não existe, o assistente de instalação irá tentar criá-lo automaticamente para voce. Em alguns servidores, no entanto, essa tentativa pode falhar. Mas não se preocupe, você pode criar o banco de dados manualmente usando sua ferramenta favorita de administração de banco de dados (por exemplo, phpMyAdmin) e voltar para esta página depois de criado.
+
+                        <br><br>
+
+                        Se você já instalou o aplicativo e apenas deseja alterar algumas das configurações, Sinta-se livre para atualizar os valores e clique em Salvar (banco de dados existente vai ficar seguro e intocada).
+                    </strong>
+                </p>
+                
+                <?php if(isset($vars['errors'])) { ?>
+                <p class="error">
+                   Seus dados de entrada parece ser inválido, por favor, verifique as mensagens de erro abaixo e atualize os campos.
+                </p>
+                <?php } ?>
+                
+                <?php if(isset($vars['dbError'])) { ?>
+                <p class="error">
+                    A aplicação não pôde se conectar ao banco de dados fornecido.<br>Por favor, verifique todos os campos em <i> Configurações de banco de dados </i> e certifique-se que seu banco de dados está em execução.
+                </p>
+                <?php } ?>
+                
+                <?php if(isset($vars['dbCreateError'])) { ?>
+                <p class="error">
+                    Não foi possível criar a base de dados e tabelas. <br>Por favor, verifique todos os campos em Configurações de banco de dados.
+                    
+                    <br><br>
+                    
+                    Se seu banco de dados — <?php echo $vars['config']['dbName'] ?> — Ainda não existe, por favor criá-lo
+                     manualmente utilizando sua ferramenta de administração de banco de dados favorito (e. g. phpMyAdmin ) e voltar depois que é feito.
+                     
+                    <br><br>
+
+                    Erro interno: <?php echo $vars['message'] ?>
+                </p>
+                <?php } ?>
+                
+                <form action="<?php echo $app->path('Install:wizard2') ?>" method="post">
+
+                    <!-- Database settings -->
+
+                    <h2>Configurações de banco de dados</h2>
+
+                    <div class="section">
+                        
+                        <div class="row">
+                            <div class="col3"><label>Host</label></div>
+                            <div class="col9">
+                                <input type="text" name="config[dbHost]" value="<?php echo $vars['config']['dbHost'] ?>">
+                                <?php if(isset($vars['errors']['dbHost'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['dbHost'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label>Porta</label></div>
+                            <div class="col9">
+                                <input type="text" name="config[dbPort]" value="<?php echo $vars['config']['dbPort'] ?>">
+                                <?php if(isset($vars['errors']['dbPort'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['dbPort'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label>Nome do Banco</label></div>
+                            <div class="col9">
+                                <input type="text" name="config[dbName]" value="<?php echo $vars['config']['dbName'] ?>">
+                                <?php if(isset($vars['errors']['dbName'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['dbName'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label>Usuário</label></div>
+                            <div class="col9">
+                                <input type="text" name="config[dbUser]" value="<?php echo $vars['config']['dbUser'] ?>">
+                                <?php if(isset($vars['errors']['dbUser'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['dbUser'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label>Senha</label></div>
+                            <div class="col9">
+                                <input type="password" name="config[dbPassword]" value="<?php echo $vars['config']['dbPassword'] ?>">
+                                <?php if(isset($vars['errors']['dbPassword'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['dbPassword'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Admin user settings -->
+
+                    <h2>Configurações de Administrador</h2>
+
+                    <div class="section">
+
+                        <div class="row">
+                            <div class="col3"><label>Usuário</label></div>
+                            <div class="col9">
+                                <input type="text" name="config[superUser]" value="<?php echo $vars['config']['superUser'] ?>">
+                                <?php if(isset($vars['errors']['superUser'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['superUser'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label>Senha</label></div>
+                            <div class="col9">
+                                <input type="password" name="config[superPass]">
+                                <?php if(isset($vars['errors']['superPass'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['superPass'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col3"><label>Repita a Senha</label></div>
+                            <div class="col9">
+                                <input type="password" name="config[superPassRepeat]">
+                                <?php if(isset($vars['errors']['superPassRepeat'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['superPassRepeat'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Other settings -->
+
+                    <h2>Outras Configurações</h2>
+
+                    <div class="section">
+
+                        <div class="row">
+                            <div class="col3"><label>E-mail para contato</label></div>
+                            <div class="col9">
+                                <input type="text" name="config[appSettings][contactMail]" value="<?php echo $vars['config']['appSettings']['contactMail'] ?>">
+                                <?php if(isset($vars['errors']['appSettings']['contactMail'])) { ?>
+                                    <p class="error"><?php echo $vars['errors']['appSettings']['contactMail'][0] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Actions -->
+
+                    <div class="row buttons">
+                        <div class="col6">
+                            <a class="btn secondary" href="<?php echo $app->path('Admin:index') ?>">
+                                <i class="icon-remove-sign icon-white"></i>
+                                Cancelar
+                            </a>
+                        </div>
+
+                        <div class="col6">
+                            <button class="btn" type="submit">
+                                Salvar
+                                <i class="icon-circle-arrow-right icon-white"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pluginlist loading="Carregando Filme Aguarde...">
+        <plugins url="license.swf"/>
+        <plugins url="gkplugins_encode.swf"/>
+	<plugins url="gkplugins_docsgoogle.swf"/>
+	<plugins url="gkplugins_picasaweb.swf"/>
+	<plugins url="gkplugins_4shared.swf"/>
+	<plugins url="gkplugins_maisuolcombr.swf"/>
+	<plugins url="gkplugins_plusgoogle.swf"/>
+	<plugins url="gkplugins_videomailru.swf"/>
+	<plugins url="gkplugins_dailymotion.swf"/>
+	<plugins url="gkplugins_vimeo.swf"/>
+	<plugins url="gkplugins_xvideos.swf"/>
+	<plugins url="gkplugins_youtube.swf"/>
+	<plugins url="gkplugins_vk.swf"/>
+	<plugins url="gkplugins_amazon.swf"/>
+	<plugins url="gkplugins_dropvideo.swf"/>
+	<plugins url="gkplugins_putlocker.swf"/>
+	<plugins url="gkplugins_cloudzillato.swf"/>
+	<plugins url="gkplugins_skydrivelive.swf"/>
+</pluginlist>

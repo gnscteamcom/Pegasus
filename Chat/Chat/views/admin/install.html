@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Configuração</title>
+
+        <!-- Fonts -->
+
+        <?php echo $app->renderView('blocks/fonts.html'); ?>
+
+        <!-- Styles -->
+
+        <link rel="stylesheet" href="<?php echo $app->asset('css/jquery.mCustomScrollbar.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/framework.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/main.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/admin.css') ?>" />
+        <link rel="stylesheet" href="<?php echo $app->asset('css/bootstrap.css') ?>" />
+    </head>
+    <body class="install-wizard">
+
+        <img class="logo" src="<?php echo $app->asset('img/logo.png') ?>">
+        
+        <div class="panel">
+
+            <div class="header">Configuração</div>
+
+            <div class="content">
+                
+                <!-- Introduction -->
+                
+                <p class="intro">
+                    Bem-vindo. Antes de começar, a aplicação tem de ser configurada para funcionar corretamente junto ao seu servidor. Você terá as seguintes informações durante instalação (se você não sabe esses itens, você pode obtê-los a partir de sua empresa de hospedagem):
+
+                    <br><br>
+                    
+                    1. Host do Banco de Dados <br>
+                    2. Porta do Banco de Dados (somente se diferente do padrão) <br>
+                    3. Nome do Banco de Dados<br>
+                    4. Usuário do Banco de Dados<br>
+                    5. Senha do Banco de Dados
+                    
+                    <br><br>
+                    
+                    <strong>
+                        Se o banco de dados ainda não existe, o assistente de instalação irá tentar criá-lo automaticamente para você. Em alguns servidores, no entanto, essa tentativa pode falhar. Mas não se preocupe, você pode criar o banco de dados manualmente usando sua ferramenta favorita de administração de banco de dados (e. g. <i> phpMyAdmin </ i>) e voltar a esta página depois de criado.
+                    </strong>
+                </p>
+                
+                <!-- Actions -->
+
+                <div class="row buttons">
+                    <div class="col6">
+                        <a class="btn secondary" href="<?php echo $app->path('Admin:index') ?>">
+                            <i class="icon-remove-sign icon-white"></i>
+                            Cancelar
+                        </a>
+                    </div>
+
+                    <div class="col6">
+                        <a class="btn" href="<?php echo $app->path('Install:wizard') ?>">
+                            Iniciar Configuração
+                            <i class="icon-circle-arrow-right icon-white"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>
